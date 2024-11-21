@@ -1,41 +1,36 @@
-# sv
+# inquisition.observer
 
-Everything you need to build a Svelte project, powered by
-[`sv`](https://github.com/sveltejs/cli).
+Connects to a local Bitcoin signet node and displays a list of all transactions
+that use one of the soft forks activated in Bitcoin Inquisition.
 
-## Creating a project
+## Running
 
-If you're seeing this, you've probably already done this step. Congrats!
+You will need [Node.js](https://nodejs.org) and
+[Yarn](https://classic.yarnpkg.com).
 
-```bash
-# create a new project in the current directory
-npx sv create
+Install dependencies:
 
-# create a new project in my-app
-npx sv create my-app
+```
+yarn
 ```
 
-## Developing
+Create a .env file with your environment variables:
 
-Once you've created a project and installed dependencies with `npm install` (or
-`pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+```properties
+DATABASE_URL=local.db
+BITCOIN_RPC_AUTH=user:password
+BITCOIN_RPC_HOST=http://127.0.0.1:38332
+BITCOIN_ZMQ_PUB_HASHBLOCK=tcp://127.0.0.1:38334
 ```
 
-## Building
+Run a local dev server:
 
-To create a production version of your app:
-
-```bash
-npm run build
+```
+yarn dev
 ```
 
-You can preview the production build with `npm run preview`.
+Build for production:
 
-> To deploy your app, you may need to install an
-> [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+```
+yarn build
+```
