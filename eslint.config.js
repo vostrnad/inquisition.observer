@@ -27,7 +27,7 @@ export default ts.config(
       parserOptions: {
         projectService: {
           allowDefaultProject: [
-            'drizzle.config.ts',
+            'mikro-orm.config.ts',
             'eslint.config.js',
             'svelte.config.js',
           ],
@@ -45,6 +45,24 @@ export default ts.config(
       parserOptions: {
         parser: ts.parser,
       },
+    },
+  },
+  {
+    files: ['src/routes/**/+page.ts', 'src/routes/**/+server.ts'],
+    rules: {
+      '@typescript-eslint/only-throw-error': 0,
+    },
+  },
+  {
+    files: ['src/**/*.svelte'],
+    rules: {
+      'unicorn/filename-case': [1, { case: 'pascalCase' }],
+    },
+  },
+  {
+    files: ['src/**/+*.svelte'],
+    rules: {
+      'unicorn/filename-case': [1, { case: 'camelCase' }],
     },
   },
   {

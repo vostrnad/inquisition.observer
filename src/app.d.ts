@@ -8,6 +8,12 @@ declare global {
     // interface PageState {}
     // interface Platform {}
   }
+
+  namespace NodeJS {
+    interface Process {
+      DEV_BACKGROUND_PROCESS_STARTED?: boolean
+    }
+  }
 }
 
 export {}

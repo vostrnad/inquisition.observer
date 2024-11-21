@@ -1,7 +1,25 @@
-import Database from 'better-sqlite3'
-import { drizzle } from 'drizzle-orm/better-sqlite3'
-import { env } from '$env/dynamic/private'
+import { MikroORM } from '@mikro-orm/better-sqlite'
+import config from './mikro-orm.config'
 
-if (!env.DATABASE_URL) throw new Error('DATABASE_URL is not set')
-const client = new Database(env.DATABASE_URL)
-export const db = drizzle(client)
+let database: MikroORM | undefined
+let databasePromise: Promise<MikroORM> | undefined
+
+export const getDatabase = async (): Promise<MikroORM> => {
+  if (databasePromise) return databasePromise
+
+  if (!database) {
+    databasePromise = (async () => {
+      const db = await MikroORM.init(config)
+      await db.schema.updateSchema()
+      return db
+    })()
+    database = await databasePromise
+    databasePromise = undefined
+  }
+
+  return database
+}
+
+export const initDatabase = async (): Promise<void> => {
+  await getDatabase()
+}
