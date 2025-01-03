@@ -12,9 +12,9 @@
 <h1>Bitcoin Inquisition Explorer</h1>
 
 <p>
-  Welcome to inquisition.observer! On this site, you'll find every transaction  
-  made on the Bitcoin signet that spends a UTXO created using one of the deployed  
-  soft forks.  
+  Welcome to inquisition.observer! On this site, you'll find every transaction
+  made on the Bitcoin signet that spends a UTXO created using one of the
+  deployed soft forks.
 </p>
 
 <p class="mb-1">As of block {data.blocks} there are:</p>

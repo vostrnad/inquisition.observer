@@ -66,6 +66,12 @@ export default ts.config(
     },
   },
   {
-    ignores: ['build/', '.svelte-kit/', 'dist/'],
+    ignores: [
+      'build/',
+      '.svelte-kit/',
+      'dist/',
+      'vite.config.js.timestamp-*',
+      'vite.config.ts.timestamp-*',
+    ],
   },
 )
