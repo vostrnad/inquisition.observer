@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import eslintConfigTypescript from '@vostrnad/eslint-config-typescript'
+import eslintConfigVitest from '@vostrnad/eslint-config-vitest'
 import eslintConfigPrettier from 'eslint-config-prettier'
 import eslintPluginSvelte from 'eslint-plugin-svelte'
 import globals from 'globals'
@@ -9,6 +10,7 @@ import ts from 'typescript-eslint'
 export default ts.config(
   ...eslintConfigTypescript,
   ...eslintPluginSvelte.configs['flat/recommended'],
+  eslintConfigVitest,
   eslintConfigPrettier,
   ...eslintPluginSvelte.configs['flat/prettier'],
   {
@@ -68,6 +70,7 @@ export default ts.config(
   {
     ignores: [
       'build/',
+      'coverage/',
       '.svelte-kit/',
       'dist/',
       'vite.config.js.timestamp-*',

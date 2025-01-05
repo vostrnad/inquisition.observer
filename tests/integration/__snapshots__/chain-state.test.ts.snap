@@ -1,0 +1,385 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`ChainState > getStoredBlockByHash > should return stored blocks by hash 1`] = `
+{
+  "hash": "0000000000000000000000000000000000000000000000000000000000000000",
+  "height": 0,
+}
+`;
+
+exports[`ChainState > getStoredBlockByHash > should return stored blocks by hash 2`] = `
+{
+  "hash": "0000000000000000000000000000000000000000000000000000000000000005",
+  "height": 5,
+}
+`;
+
+exports[`ChainState > getStoredBlockByHash > should return stored blocks by hash 3`] = `
+{
+  "hash": "000000000000000000000000000000000000000000000000000000000000000f",
+  "height": 15,
+}
+`;
+
+exports[`ChainState > getStoredBlockByHeight > should return stored blocks by height 1`] = `
+{
+  "hash": "0000000000000000000000000000000000000000000000000000000000000000",
+  "height": 0,
+}
+`;
+
+exports[`ChainState > getStoredBlockByHeight > should return stored blocks by height 2`] = `
+{
+  "hash": "0000000000000000000000000000000000000000000000000000000000000005",
+  "height": 5,
+}
+`;
+
+exports[`ChainState > getStoredBlockByHeight > should return stored blocks by height 3`] = `
+{
+  "hash": "000000000000000000000000000000000000000000000000000000000000000f",
+  "height": 15,
+}
+`;
+
+exports[`ChainState > processBlocks > should correctly handle the annex 1`] = `
+[
+  {
+    "block": {
+      "hash": "0000000000000000000000000000000000000000000000000000000000000000",
+      "height": 12,
+      "time": 7200,
+    },
+    "blockPosition": 1,
+    "hasApo": false,
+    "hasCat": true,
+    "hasCtv": false,
+    "inputs": [
+      {
+        "address": "bc1pp2tr",
+        "hasApo": false,
+        "hasCat": true,
+        "hasCtv": false,
+        "inputIndex": 0,
+        "scriptAsm": "OP_CAT",
+        "type": "p2tr",
+      },
+    ],
+    "txid": "0000000000000000000000000000000000000000000000000000000000000000",
+    "vsize": 100,
+  },
+]
+`;
+
+exports[`ChainState > processBlocks > should process a block with CAT 1`] = `
+[
+  {
+    "block": {
+      "hash": "0000000000000000000000000000000000000000000000000000000000000000",
+      "height": 12,
+      "time": 7200,
+    },
+    "blockPosition": 1,
+    "hasApo": false,
+    "hasCat": true,
+    "hasCtv": false,
+    "inputs": [
+      {
+        "address": "bc1pp2tr",
+        "hasApo": false,
+        "hasCat": true,
+        "hasCtv": false,
+        "inputIndex": 0,
+        "scriptAsm": "OP_CAT",
+        "type": "p2tr",
+      },
+    ],
+    "txid": "0000000000000000000000000000000000000000000000000000000000000000",
+    "vsize": 100,
+  },
+]
+`;
+
+exports[`ChainState > processBlocks > should process an empty block 1`] = `
+[
+  {
+    "hash": "0000000000000000000000000000000000000000000000000000000000000000",
+    "height": 12,
+    "time": 7200,
+  },
+]
+`;
+
+exports[`ChainState > processBlocks > should process blocks with APO 1`] = `
+[
+  {
+    "block": {
+      "hash": "0000000000000000000000000000000000000000000000000000000000000000",
+      "height": 12,
+      "time": 7200,
+    },
+    "blockPosition": 1,
+    "hasApo": true,
+    "hasCat": false,
+    "hasCtv": false,
+    "inputs": [
+      {
+        "address": "bc1pp2tr",
+        "hasApo": true,
+        "hasCat": false,
+        "hasCtv": false,
+        "inputIndex": 0,
+        "scriptAsm": "OP_1 OP_CHECKSIG",
+        "type": "p2tr",
+      },
+    ],
+    "txid": "0000000000000000000000000000000000000000000000000000000000000000",
+    "vsize": 100,
+  },
+  {
+    "block": {
+      "hash": "0000000000000000000000000000000000000000000000000000000000000000",
+      "height": 12,
+      "time": 7200,
+    },
+    "blockPosition": 2,
+    "hasApo": true,
+    "hasCat": false,
+    "hasCtv": false,
+    "inputs": [
+      {
+        "address": "bc1pp2tr",
+        "hasApo": true,
+        "hasCat": false,
+        "hasCtv": false,
+        "inputIndex": 0,
+        "scriptAsm": "OP_PUSHBYTES_33 010000000000000000000000000000000000000000000000000000000000000000 OP_CHECKSIG",
+        "type": "p2tr",
+      },
+    ],
+    "txid": "0000000000000000000000000000000000000000000000000000000000000001",
+    "vsize": 100,
+  },
+  {
+    "block": {
+      "hash": "0000000000000000000000000000000000000000000000000000000000000001",
+      "height": 13,
+      "time": 7200,
+    },
+    "blockPosition": 1,
+    "hasApo": true,
+    "hasCat": false,
+    "hasCtv": false,
+    "inputs": [
+      {
+        "address": "bc1pp2tr",
+        "hasApo": true,
+        "hasCat": false,
+        "hasCtv": false,
+        "inputIndex": 0,
+        "scriptAsm": "OP_1 OP_CHECKSIGVERIFY",
+        "type": "p2tr",
+      },
+    ],
+    "txid": "0000000000000000000000000000000000000000000000000000000000000003",
+    "vsize": 100,
+  },
+  {
+    "block": {
+      "hash": "0000000000000000000000000000000000000000000000000000000000000001",
+      "height": 13,
+      "time": 7200,
+    },
+    "blockPosition": 2,
+    "hasApo": true,
+    "hasCat": false,
+    "hasCtv": false,
+    "inputs": [
+      {
+        "address": "bc1pp2tr",
+        "hasApo": true,
+        "hasCat": false,
+        "hasCtv": false,
+        "inputIndex": 0,
+        "scriptAsm": "OP_PUSHBYTES_33 010000000000000000000000000000000000000000000000000000000000000000 OP_CHECKSIGVERIFY",
+        "type": "p2tr",
+      },
+    ],
+    "txid": "0000000000000000000000000000000000000000000000000000000000000004",
+    "vsize": 100,
+  },
+  {
+    "block": {
+      "hash": "0000000000000000000000000000000000000000000000000000000000000002",
+      "height": 14,
+      "time": 7200,
+    },
+    "blockPosition": 1,
+    "hasApo": true,
+    "hasCat": false,
+    "hasCtv": false,
+    "inputs": [
+      {
+        "address": "bc1pp2tr",
+        "hasApo": true,
+        "hasCat": false,
+        "hasCtv": false,
+        "inputIndex": 0,
+        "scriptAsm": "OP_1 OP_CHECKSIGADD",
+        "type": "p2tr",
+      },
+    ],
+    "txid": "0000000000000000000000000000000000000000000000000000000000000006",
+    "vsize": 100,
+  },
+  {
+    "block": {
+      "hash": "0000000000000000000000000000000000000000000000000000000000000002",
+      "height": 14,
+      "time": 7200,
+    },
+    "blockPosition": 2,
+    "hasApo": true,
+    "hasCat": false,
+    "hasCtv": false,
+    "inputs": [
+      {
+        "address": "bc1pp2tr",
+        "hasApo": true,
+        "hasCat": false,
+        "hasCtv": false,
+        "inputIndex": 0,
+        "scriptAsm": "OP_PUSHBYTES_33 010000000000000000000000000000000000000000000000000000000000000000 OP_CHECKSIGADD",
+        "type": "p2tr",
+      },
+    ],
+    "txid": "0000000000000000000000000000000000000000000000000000000000000007",
+    "vsize": 100,
+  },
+]
+`;
+
+exports[`ChainState > processBlocks > should process blocks with CTV 1`] = `
+[
+  {
+    "block": {
+      "hash": "0000000000000000000000000000000000000000000000000000000000000000",
+      "height": 12,
+      "time": 7200,
+    },
+    "blockPosition": 1,
+    "hasApo": false,
+    "hasCat": false,
+    "hasCtv": true,
+    "inputs": [
+      {
+        "address": null,
+        "hasApo": false,
+        "hasCat": false,
+        "hasCtv": true,
+        "inputIndex": 0,
+        "scriptAsm": "OP_CHECKTEMPLATEVERIFY",
+        "type": "bare",
+      },
+    ],
+    "txid": "0000000000000000000000000000000000000000000000000000000000000000",
+    "vsize": 100,
+  },
+  {
+    "block": {
+      "hash": "0000000000000000000000000000000000000000000000000000000000000000",
+      "height": 12,
+      "time": 7200,
+    },
+    "blockPosition": 2,
+    "hasApo": false,
+    "hasCat": false,
+    "hasCtv": true,
+    "inputs": [
+      {
+        "address": "3p2sh",
+        "hasApo": false,
+        "hasCat": false,
+        "hasCtv": true,
+        "inputIndex": 0,
+        "scriptAsm": "OP_CHECKTEMPLATEVERIFY",
+        "type": "p2sh",
+      },
+    ],
+    "txid": "0000000000000000000000000000000000000000000000000000000000000001",
+    "vsize": 100,
+  },
+  {
+    "block": {
+      "hash": "0000000000000000000000000000000000000000000000000000000000000001",
+      "height": 13,
+      "time": 7200,
+    },
+    "blockPosition": 1,
+    "hasApo": false,
+    "hasCat": false,
+    "hasCtv": true,
+    "inputs": [
+      {
+        "address": "3p2sh",
+        "hasApo": false,
+        "hasCat": false,
+        "hasCtv": true,
+        "inputIndex": 0,
+        "scriptAsm": "OP_CHECKTEMPLATEVERIFY",
+        "type": "p2sh-p2wsh",
+      },
+    ],
+    "txid": "0000000000000000000000000000000000000000000000000000000000000003",
+    "vsize": 100,
+  },
+  {
+    "block": {
+      "hash": "0000000000000000000000000000000000000000000000000000000000000001",
+      "height": 13,
+      "time": 7200,
+    },
+    "blockPosition": 2,
+    "hasApo": false,
+    "hasCat": false,
+    "hasCtv": true,
+    "inputs": [
+      {
+        "address": "bc1qp2wsh",
+        "hasApo": false,
+        "hasCat": false,
+        "hasCtv": true,
+        "inputIndex": 0,
+        "scriptAsm": "OP_CHECKTEMPLATEVERIFY",
+        "type": "p2wsh",
+      },
+    ],
+    "txid": "0000000000000000000000000000000000000000000000000000000000000004",
+    "vsize": 100,
+  },
+  {
+    "block": {
+      "hash": "0000000000000000000000000000000000000000000000000000000000000001",
+      "height": 13,
+      "time": 7200,
+    },
+    "blockPosition": 3,
+    "hasApo": false,
+    "hasCat": false,
+    "hasCtv": true,
+    "inputs": [
+      {
+        "address": "bc1pp2tr",
+        "hasApo": false,
+        "hasCat": false,
+        "hasCtv": true,
+        "inputIndex": 0,
+        "scriptAsm": "OP_CHECKTEMPLATEVERIFY",
+        "type": "p2tr",
+      },
+    ],
+    "txid": "0000000000000000000000000000000000000000000000000000000000000005",
+    "vsize": 100,
+  },
+]
+`;

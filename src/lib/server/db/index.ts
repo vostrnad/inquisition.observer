@@ -23,3 +23,9 @@ export const getDatabase = async (): Promise<MikroORM> => {
 export const initDatabase = async (): Promise<void> => {
   await getDatabase()
 }
+
+export const closeDatabaseIfConnected = async (): Promise<void> => {
+  const db = await (databasePromise ?? database)
+  database = undefined
+  await db?.close()
+}

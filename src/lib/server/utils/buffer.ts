@@ -4,6 +4,13 @@ export const hexToBuffer = (hex: string): Buffer => Buffer.from(hex, 'hex')
 
 export const bufferToHex = (buffer: Buffer): string => buffer.toString('hex')
 
+export const ensureHex = (input: Buffer | string): string => {
+  if (typeof input !== 'string') {
+    input = bufferToHex(input)
+  }
+  return input
+}
+
 export const bufferToUIntLE = (buffer: Buffer): number => {
   return sum(Array.from(buffer).map((byte, index) => byte * 256 ** index))
 }
@@ -15,6 +22,17 @@ export const bufferToIntLE = (buffer: Buffer): number => {
     return uint
   }
   return midpoint - uint
+}
+
+export const bufferConcat = (list: Array<Uint8Array | number>): Buffer => {
+  return Buffer.concat(
+    list.map((value) => {
+      if (typeof value === 'number') {
+        value = Buffer.from([value])
+      }
+      return value
+    }),
+  )
 }
 
 export class BufferReader {

@@ -25,29 +25,31 @@ export type ScriptPubKeyType =
   | 'anchor'
   | 'witness_unknown'
 
-export type TxInput =
-  | {
-      coinbase: string
-      txinwitness?: string[]
-      sequence: number
+export interface CoinbaseInput {
+  coinbase: string
+  txinwitness?: string[]
+  sequence: number
+}
+
+export interface NoncoinbaseInput {
+  txid: string
+  vout: number
+  scriptSig: {
+    hex: string
+  }
+  prevout?: {
+    value: number
+    scriptPubKey: {
+      hex: string
+      address?: string
+      type: ScriptPubKeyType
     }
-  | {
-      txid: string
-      vout: number
-      scriptSig: {
-        hex: string
-      }
-      prevout?: {
-        value: number
-        scriptPubKey: {
-          hex: string
-          address?: string
-          type: ScriptPubKeyType
-        }
-      }
-      txinwitness?: string[]
-      sequence: number
-    }
+  }
+  txinwitness?: string[]
+  sequence: number
+}
+
+export type TxInput = CoinbaseInput | NoncoinbaseInput
 
 export interface TxOutput {
   value: number

@@ -6,6 +6,7 @@ temp
 .vercel
 /.svelte-kit
 /build
+/coverage
 
 # OS
 .DS_Store

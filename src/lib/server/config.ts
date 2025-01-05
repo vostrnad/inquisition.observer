@@ -1,4 +1,6 @@
 import 'dotenv/config'
+import { randomUUID } from 'crypto'
+import path from 'path'
 
 const getEnvironmentValue = (key: string, defaultValue?: string): string => {
   const envVal = process.env[key] || defaultValue
@@ -24,9 +26,13 @@ export const getEnvironmentNumber = (
   return envVal
 }
 
+export const testDir = path.join('temp', randomUUID())
+
 export const config = {
   db: {
-    name: getEnvironmentValue('DATABASE_URL', 'local.db'),
+    name: process.env.TEST
+      ? path.join(testDir, 'test.db')
+      : getEnvironmentValue('DATABASE_URL', 'local.db'),
   },
   bitcoin: {
     rpcAuth: getEnvironmentValue('BITCOIN_RPC_AUTH', 'user:password'),
