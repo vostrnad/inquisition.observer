@@ -1,7 +1,8 @@
 <script lang="ts">
   import { FormGroup, Input } from '@sveltestrap/sveltestrap'
+  import { SvelteURLSearchParams } from 'svelte/reactivity'
   import { goto } from '$app/navigation'
-  import { page } from '$app/stores'
+  import { page } from '$app/state'
   import { delay } from '$lib/utils/async'
   import ListPagination from './ListPagination.svelte'
   import Transaction from './Transaction.svelte'
@@ -19,7 +20,7 @@
     newPageNumber: number,
     newFilter: string | undefined,
   ) => {
-    const url = new URL(`/api/latest/${newPageNumber - 1}`, $page.url.origin)
+    const url = new URL(`/api/latest/${newPageNumber - 1}`, page.url.origin)
 
     if (newFilter) {
       url.searchParams.set('type', newFilter)
@@ -35,8 +36,8 @@
     loading = false
   }
 
-  const pageNumber = $derived(Number($page.url.searchParams.get('page') ?? 1))
-  const filter = $derived($page.url.searchParams.get('type') ?? '')
+  const pageNumber = $derived(Number(page.url.searchParams.get('page') ?? 1))
+  const filter = $derived(page.url.searchParams.get('type') ?? '')
 
   $effect(() => {
     void fetchPage(pageNumber, filter)
@@ -52,13 +53,14 @@
       class="w-auto"
       value={filter}
       on:change={(e) => {
-        const query = new URLSearchParams($page.url.search)
+        const query = new SvelteURLSearchParams(page.url.search)
         if (e.currentTarget.value) {
           query.set('type', e.currentTarget.value)
         } else {
           query.delete('type')
         }
         query.delete('page')
+        // eslint-disable-next-line svelte/no-navigation-without-resolve
         void goto(`?${query.toString()}`)
       }}
     >
@@ -84,10 +86,8 @@
     style:pointer-events={loading ? 'none' : 'initial'}
   >
     {#if data}
-      {#each data.results as tx}
-        {#key tx.txid}
-          <Transaction {...tx} />
-        {/key}
+      {#each data.results as tx (tx.txid)}
+        <Transaction {...tx} />
       {/each}
 
       <ListPagination {pageNumber} pageSize={20} total={data.total} />

@@ -39,13 +39,15 @@
     style="font-size: 0.75rem; font-family: Courier New, Courier, monospace; word-break: break-all;"
   >
     {#if scriptAsm.length === 0}
-      {'<empty script>'}
+      &lt;empty script&gt;
     {:else if showEntireScript}
+      <!-- eslint-disable-next-line svelte/require-each-key -->
       {#each scriptLines as line}
         {line}
         <br />
       {/each}
     {:else}
+      <!-- eslint-disable-next-line svelte/require-each-key -->
       {#each scriptLines.slice(0, 20) as line}
         {line}
         <br />

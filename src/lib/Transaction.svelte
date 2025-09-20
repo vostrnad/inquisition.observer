@@ -16,6 +16,7 @@
     ListGroup,
     ListGroupItem,
   } from '@sveltestrap/sveltestrap'
+  import { resolve } from '$app/paths'
   import TableRow from './TableRow.svelte'
   import TransactionInput from './TransactionInput.svelte'
   import type { SerializedTransaction } from './types'
@@ -27,8 +28,9 @@
 
 <Container class="shadow-sm border rounded p-3">
   <h5 style="display: flex;">
-    <a href={`/tx/${txid}`} class="text-decoration-none text-body ellipsis"
-      >Transaction {txid}</a
+    <a
+      href={resolve(`/tx/${txid}`)}
+      class="text-decoration-none text-body ellipsis">Transaction {txid}</a
     >
     <!-- svelte-ignore a11y_consider_explicit_label -->
     <a
@@ -70,7 +72,7 @@
   </Container>
 
   <ListGroup class="mt-2">
-    {#each showAllInputs ? inputs : inputs.slice(0, 8) as input}
+    {#each showAllInputs ? inputs : inputs.slice(0, 8) as input (input.inputIndex)}
       {#if typeof input.scriptAsm === 'string'}
         <ListGroupItem><TransactionInput {...input} /></ListGroupItem>
       {:else}

@@ -1,13 +1,14 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import eslintConfigTypescript from '@vostrnad/eslint-config-typescript'
 import eslintConfigVitest from '@vostrnad/eslint-config-vitest'
+import { defineConfig } from 'eslint/config'
 import eslintConfigPrettier from 'eslint-config-prettier'
 import eslintPluginSvelte from 'eslint-plugin-svelte'
 import globals from 'globals'
 import svelteParser from 'svelte-eslint-parser'
 import ts from 'typescript-eslint'
 
-export default ts.config(
+export default defineConfig(
   ...eslintConfigTypescript,
   ...eslintPluginSvelte.configs['flat/recommended'],
   eslintConfigVitest,

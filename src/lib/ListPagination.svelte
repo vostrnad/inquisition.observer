@@ -4,8 +4,9 @@
     PaginationItem,
     PaginationLink,
   } from '@sveltestrap/sveltestrap'
+  import { SvelteURLSearchParams } from 'svelte/reactivity'
   import { goto } from '$app/navigation'
-  import { page } from '$app/stores'
+  import { page } from '$app/state'
 
   const {
     pageNumber,
@@ -33,8 +34,9 @@
 
   const setPage = (num: number | null) => {
     if (num === null) return
-    const query = new URLSearchParams($page.url.search)
+    const query = new SvelteURLSearchParams(page.url.search)
     query.set('page', num.toString())
+    // eslint-disable-next-line svelte/no-navigation-without-resolve
     void goto(`?${query.toString()}`)
   }
 </script>
@@ -46,6 +48,7 @@
   <PaginationItem disabled={pageNumber <= 1}>
     <PaginationLink {href} previous on:click={() => setPage(pageNumber - 1)} />
   </PaginationItem>
+  <!-- eslint-disable-next-line svelte/require-each-key -->
   {#each buttons as button}
     <PaginationItem disabled={button === null} active={button === pageNumber}>
       <PaginationLink {href} on:click={() => setPage(button)}

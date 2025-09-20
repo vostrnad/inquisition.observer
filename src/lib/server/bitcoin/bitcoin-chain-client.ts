@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import { EventEmitter } from 'events'
 import PQueue from 'p-queue'
-import zmq from 'zeromq'
+import zmq from 'zeromq/v5-compat'
 import { bufferToHex } from '$lib/server/utils/buffer'
 import { type TypedEventEmitter } from '$lib/server/utils/typed-event-emitter'
 import { BitcoinJsonRpcClient, type Block } from './json-rpc'
