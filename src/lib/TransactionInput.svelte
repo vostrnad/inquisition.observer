@@ -15,12 +15,21 @@
   let showEntireScript = $derived(
     showEntireScriptClicked || scriptLines.length <= 32,
   )
+  let addressText = $derived.by(() => {
+    if (address) return address
+    if (
+      /^OP_PUSHBYTES_32 [\da-f]{64} OP_CHECKTEMPLATEVERIFY$/.test(scriptAsm)
+    ) {
+      return '(bare CTV output)'
+    }
+    return '(non-standard output script)'
+  })
 </script>
 
 <Container class="p-0">
   <p class="mb-1 ellipsis">
     <span class="pe-4" class:text-muted={!address}
-      >{address || '(non-standard output script)'}</span
+      >{address || addressText}</span
     >
   </p>
 
