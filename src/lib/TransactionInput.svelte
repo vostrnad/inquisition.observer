@@ -8,6 +8,8 @@
     hasApo,
     hasCtv,
     hasCat,
+    hasCsfs,
+    hasIkey,
   }: SerializedTransactionInput = $props()
 
   let scriptLines = $derived(scriptAsm.split(/ (?=OP_)/))
@@ -41,6 +43,12 @@
   {/if}
   {#if hasCat}
     <span class="badge text-bg-success">OP_CAT</span>
+  {/if}
+  {#if hasCsfs}
+    <span class="badge text-bg-success">OP_CHECKSIGFROMSTACK</span>
+  {/if}
+  {#if hasIkey}
+    <span class="badge text-bg-success">OP_INTERNALKEY</span>
   {/if}
 
   <p

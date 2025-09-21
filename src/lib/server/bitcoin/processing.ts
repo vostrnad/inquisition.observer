@@ -98,14 +98,20 @@ export const getTransactionEntity = (
     })
 
     const hasApo =
-      type === 'p2tr' &&
-      /(^| )01([\da-f]{64})? OP_CHECKSIG(VERIFY|ADD|)($| )/.test(scriptAsm)
+      type === InputType.p2tr &&
+      /\b01([\da-f]{64})? OP_CHECKSIG(VERIFY|ADD|)\b/.test(scriptAsm)
 
     const hasCtv = scriptAsm.includes('OP_CHECKTEMPLATEVERIFY')
 
-    const hasCat = type === 'p2tr' && scriptAsm.includes('OP_CAT')
+    const hasCat = type === InputType.p2tr && scriptAsm.includes('OP_CAT')
 
-    if (hasApo || hasCtv || hasCat) {
+    const hasCsfs =
+      type === InputType.p2tr && scriptAsm.includes('OP_CHECKSIGFROMSTACK')
+
+    const hasIkey =
+      type === InputType.p2tr && scriptAsm.includes('OP_INTERNALKEY')
+
+    if (hasApo || hasCtv || hasCat || hasCsfs || hasIkey) {
       transactionInputs.push(
         wrap(new TransactionInput()).assign({
           inputIndex,
@@ -115,6 +121,8 @@ export const getTransactionEntity = (
           hasApo,
           hasCtv,
           hasCat,
+          hasCsfs,
+          hasIkey,
         }),
       )
     }
@@ -129,6 +137,8 @@ export const getTransactionEntity = (
       hasApo: transactionInputs.some((input) => input.hasApo),
       hasCtv: transactionInputs.some((input) => input.hasCtv),
       hasCat: transactionInputs.some((input) => input.hasCat),
+      hasCsfs: transactionInputs.some((input) => input.hasCsfs),
+      hasIkey: transactionInputs.some((input) => input.hasIkey),
     })
   } else {
     return undefined

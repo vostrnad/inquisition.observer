@@ -49,6 +49,28 @@
       >BIP347</a
     >)
   </li>
+  <li>
+    {data.csfs} transactions that use <code>OP_CHECKSIGFROMSTACK</code> (<code
+      >OP_CSFS</code
+    >,
+    <a
+      target="_blank"
+      rel="noreferrer"
+      href="https://github.com/bitcoin/bips/blob/master/bip-0348.mediawiki"
+      >BIP348</a
+    >)
+  </li>
+  <li>
+    {data.ikey} transactions that use <code>OP_INTERNALKEY</code> (<code
+      >OP_IKEY</code
+    >,
+    <a
+      target="_blank"
+      rel="noreferrer"
+      href="https://github.com/bitcoin/bips/blob/master/bip-0349.mediawiki"
+      >BIP349</a
+    >)
+  </li>
 </ul>
 
 <TransactionList />

@@ -28,6 +28,12 @@ export const GET: RequestHandler = async ({ params, request }) => {
     case 'cat':
       filter = { hasCat: true }
       break
+    case 'csfs':
+      filter = { hasCsfs: true }
+      break
+    case 'ikey':
+      filter = { hasIkey: true }
+      break
     default:
       throw error(400, 'Invalid type')
   }

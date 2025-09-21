@@ -16,6 +16,8 @@ export const GET: RequestHandler = async () => {
   const apo = await transactionRepository.count({ hasApo: true })
   const ctv = await transactionRepository.count({ hasCtv: true })
   const cat = await transactionRepository.count({ hasCat: true })
+  const csfs = await transactionRepository.count({ hasCsfs: true })
+  const ikey = await transactionRepository.count({ hasIkey: true })
 
   return json({
     blocks,
@@ -23,5 +25,7 @@ export const GET: RequestHandler = async () => {
     apo,
     ctv,
     cat,
+    csfs,
+    ikey,
   })
 }

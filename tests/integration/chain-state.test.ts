@@ -135,6 +135,26 @@ describe('ChainState', () => {
       expect(transactions).toMatchSnapshot()
     })
 
+    it('should process a block with CSFS', async () => {
+      await processBlocks([
+        createBlock([createTransaction([createP2TRInput('cc')])]),
+      ])
+
+      const transactions = await getAllTransactions()
+      expect(transactions).toHaveLength(1)
+      expect(transactions).toMatchSnapshot()
+    })
+
+    it('should process a block with IKEY', async () => {
+      await processBlocks([
+        createBlock([createTransaction([createP2TRInput('cb')])]),
+      ])
+
+      const transactions = await getAllTransactions()
+      expect(transactions).toHaveLength(1)
+      expect(transactions).toMatchSnapshot()
+    })
+
     it('should correctly handle the annex', async () => {
       const input = createP2TRInput('7e')
       input.txinwitness.push('50')
