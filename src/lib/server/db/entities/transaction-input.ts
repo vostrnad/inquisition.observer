@@ -28,6 +28,10 @@ export class TransactionInput extends CustomBaseEntity {
   public hasCtv: boolean
   @Property({ type: 'boolean' })
   public hasCat: boolean
+  @Property({ type: 'boolean' })
+  public hasCsfs: boolean
+  @Property({ type: 'boolean' })
+  public hasIkey: boolean
 
   @Property({ type: 'string', persist: false })
   public get scriptAsm(): string {
