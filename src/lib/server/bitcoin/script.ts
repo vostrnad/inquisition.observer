@@ -118,6 +118,9 @@ const opcodes = new Map<number, string>([
   // Opcode added by BIP 342 (Tapscript)
   [0xba, 'OP_CHECKSIGADD'],
 
+  [0xcb, 'OP_INTERNALKEY'],
+  [0xcc, 'OP_CHECKSIGFROMSTACK'],
+
   [0xff, 'OP_INVALIDOPCODE'],
 ])
 

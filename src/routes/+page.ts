@@ -6,6 +6,8 @@ export interface Counts {
   apo: number
   ctv: number
   cat: number
+  csfs: number
+  ikey: number
 }
 
 export const load: PageLoad = async ({ fetch }) => {

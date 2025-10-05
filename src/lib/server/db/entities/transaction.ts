@@ -35,6 +35,12 @@ export class Transaction extends CustomBaseEntity {
   @Property({ type: 'boolean' })
   @Index()
   public hasCat: boolean
+  @Property({ type: 'boolean' })
+  @Index()
+  public hasCsfs: boolean
+  @Property({ type: 'boolean' })
+  @Index()
+  public hasIkey: boolean
 
   @ManyToOne(() => Block, { deleteRule: 'cascade' })
   public block: Block

@@ -21,4 +21,6 @@ export interface SoftForkFlags {
   hasApo: boolean
   hasCtv: boolean
   hasCat: boolean
+  hasCsfs: boolean
+  hasIkey: boolean
 }

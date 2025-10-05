@@ -68,6 +68,8 @@
       <option value="apo">SIGHASH_ANYPREVOUT</option>
       <option value="ctv">OP_CHECKTEMPLATEVERIFY</option>
       <option value="cat">OP_CAT</option>
+      <option value="csfs">OP_CHECKSIGFROMSTACK</option>
+      <option value="ikey">OP_INTERNALKEY</option>
     </Input>
   </FormGroup>
 
